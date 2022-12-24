@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F17F9312957897C003EBB64 /* StockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F17F9302957897C003EBB64 /* StockListViewModel.swift */; };
 		F9C2DB2827B11ADB00C09B75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C2DB2727B11ADB00C09B75 /* AppDelegate.swift */; };
 		F9C2DB2A27B11ADB00C09B75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C2DB2927B11ADB00C09B75 /* SceneDelegate.swift */; };
 		F9C2DB2C27B11ADB00C09B75 /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C2DB2B27B11ADB00C09B75 /* StockListViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F17F9302957897C003EBB64 /* StockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewModel.swift; sourceTree = "<group>"; };
 		F9C2DB2427B11ADB00C09B75 /* StockViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C2DB2727B11ADB00C09B75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9C2DB2927B11ADB00C09B75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				F9F6545727B1328F00900681 /* Stock.swift */,
 				F9C2DB2B27B11ADB00C09B75 /* StockListViewController.swift */,
 				F9F6545527B1229D00900681 /* StockListCell.swift */,
+				9F17F9302957897C003EBB64 /* StockListViewModel.swift */,
 			);
 			path = StockList;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				F9F6545B27B133DA00900681 /* StockPriceUpdateService.swift in Sources */,
 				F9F6545827B1328F00900681 /* Stock.swift in Sources */,
 				F9C2DB2A27B11ADB00C09B75 /* SceneDelegate.swift in Sources */,
+				9F17F9312957897C003EBB64 /* StockListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

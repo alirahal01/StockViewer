@@ -1,32 +1,24 @@
 import UIKit
 
-final class StockListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class StockListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, StockListDelegate {
+    func updateTableView() {
+        tableView.reloadData()
+    }
+    
 
-    let stocks: [Stock] = Stock.demoStocks
-
-    var prices: [(stockId: String, price: Double)] = []
-
-    let stockPriceService = StockPriceUpdateService()
-
+    //MARK: Outlets
     private var tableView = UITableView()
-
+    var viewModel: StockListViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "My Stocks"
+        setupTableView()
+        self.viewModel?.updateStockPrices()
+        self.viewModel?.delegate = self
+    }
 
-        for stock in stocks {
-            stockPriceService.subscribe(stockId: stock.stockId) { priceUpdate in
-                let price = (priceUpdate.currentPrice as NSDecimalNumber).doubleValue
-                if let index = self.prices.firstIndex(where: { $0.stockId == stock.stockId }) {
-                    self.prices[index] = (stock.stockId, price)
-                } else {
-                    self.prices.append((stock.stockId, price))
-                }
-                self.tableView.reloadData()
-            }
-        }
-
+    func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(StockListCell.self, forCellReuseIdentifier: "StockListCell")
@@ -34,9 +26,9 @@ final class StockListViewController: UIViewController, UITableViewDataSource, UI
         tableView.frame = view.bounds
         view.addSubview(tableView)
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stocks.count
+        return self.viewModel?.stocks.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,9 +36,8 @@ final class StockListViewController: UIViewController, UITableViewDataSource, UI
         guard let stockListCell = cell as? StockListCell else {
             return cell
         }
-        stockListCell.nameLabel.text = stocks[indexPath.row].name
-        let price = prices.first(where: { $0.stockId == stocks[indexPath.row].stockId })?.price ?? 0.0
-        let formattedPrice = String(format: "%.2f €", price)
+        guard let stock = self.viewModel?.getCellInfo(index: indexPath) else { return UITableViewCell() }
+        stockListCell.nameLabel.text = stock.name
         stockListCell.priceLabel.text = formattedPrice
         return stockListCell
     }
