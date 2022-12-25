@@ -10,8 +10,6 @@ class Stock: NSObject {
         self.name = name
         self.price = price
     }
-    
-    let formattedPrice = String(format: "%.2f €", stock.price ?? 0)
 }
 
 extension Stock {

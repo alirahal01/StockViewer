@@ -38,6 +38,7 @@ final class StockListViewController: UIViewController, UITableViewDataSource, UI
         }
         guard let stock = self.viewModel?.getCellInfo(index: indexPath) else { return UITableViewCell() }
         stockListCell.nameLabel.text = stock.name
+        let formattedPrice = String(format: "%.2f €", stock.price ?? 0)
         stockListCell.priceLabel.text = formattedPrice
         return stockListCell
     }
